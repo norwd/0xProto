@@ -5,24 +5,21 @@ ROMAN_GLYPHS_FILE = $(SOURCE_DIR)/$(FONT_NAME).glyphspackage
 ITALIC_GLYPHS_FILE = $(SOURCE_DIR)/$(FONT_NAME)-Italic.glyphspackage
 OUTPUT_DIR = fonts
 WOFF2_DIR = woff2
-SCRIPTS_DIR = font-scripts/scripts
+SCRIPTS_DIR = scripts
 
 setup:
 	pip install -r requirements.txt
 	if [ ! -e $(WOFF2_DIR) ]; then $(MAKE) setup-woff2; fi
-	if [ ! -e $(SCRIPTS_DIR) ]; then $(MAKE) setup-scripts; fi
 
 setup-woff2:
 	git clone --recursive https://github.com/google/woff2.git $(WOFF2_DIR)
 	cd $(WOFF2_DIR) && make clean all
 
-setup-scripts:
-	git clone https://github.com/0xtype/font-scripts
-
 .PHONY: build
 build:
 	$(MAKE) clean
 	$(MAKE) compile-all
+	python scripts/add_stat.py $(OUTPUT_DIR)/$(FONT_NAME)-Regular.ttf $(OUTPUT_DIR)/$(FONT_NAME)-Bold.ttf $(OUTPUT_DIR)/$(FONT_NAME)-Italic.ttf
 	python $(SCRIPTS_DIR)/remove_calt.py $(OUTPUT_DIR) -o $(OUTPUT_DIR)/No-Ligatures
 	python $(SCRIPTS_DIR)/build_zx_fonts.py
 
@@ -59,3 +56,8 @@ install-otf: $(OUTPUT_DIR)
 .PHONY: install
 install:
 	$(MAKE) build && $(MAKE) install-otf
+
+
+.PHONY: test
+test:
+	fontbakery check-opentype fonts/**/**.ttf
