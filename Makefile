@@ -60,6 +60,6 @@ install:
 
 .PHONY: test
 test:
-	uv run fontbakery check-opentype $(OUTPUT_DIR)/$(FONT_NAME)-*.ttf
-	uv run fontbakery check-opentype $(OUTPUT_DIR)/No-Ligatures/*.ttf
-	uv run fontbakery check-opentype $(OUTPUT_DIR)/ZxProto/*.ttf
+	uv run fontbakery check-universal $(OUTPUT_DIR)/$(FONT_NAME)-*.ttf
+	uv run fontbakery check-universal $(OUTPUT_DIR)/No-Ligatures/*.ttf
+	uv run fontbakery check-universal $(OUTPUT_DIR)/ZxProto/*.ttf

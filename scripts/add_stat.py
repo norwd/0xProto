@@ -107,6 +107,9 @@ def add_stat_table(font_path):
     stat_table.table = stat
     font["STAT"] = stat_table
 
+    # Set head.flags bit 3 for hinted fonts (PPEM rounding)
+    font["head"].flags |= 0x0008
+
     font.save(font_path)
     print(f"Added STAT table to {font_path}")
 
@@ -131,10 +134,8 @@ def _add_name(font, name_string):
     while name_id in existing_ids:
         name_id += 1
 
-    # Add name for Windows platform
+    # Add name for Windows platform only (no Mac platform to avoid fontbakery warnings)
     name_table.setName(name_string, name_id, 3, 1, 0x409)
-    # Add name for Mac platform
-    name_table.setName(name_string, name_id, 1, 0, 0)
 
     return name_id
 

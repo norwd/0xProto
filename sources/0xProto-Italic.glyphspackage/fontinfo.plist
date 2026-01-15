@@ -39,6 +39,34 @@ value = (
 );
 },
 {
+name = hheaAscender;
+value = 1130;
+},
+{
+name = hheaDescender;
+value = -430;
+},
+{
+name = typoAscender;
+value = 1130;
+},
+{
+name = typoDescender;
+value = -430;
+},
+{
+name = typoLineGap;
+value = 0;
+},
+{
+name = winAscent;
+value = 1130;
+},
+{
+name = winDescent;
+value = 430;
+},
+{
 name = "Write lastChange";
 value = 0;
 }
