@@ -1,5 +1,5 @@
 {
-.appVersion = "3508";
+.appVersion = "3509";
 .formatVersion = 3;
 classes = (
 {
@@ -71,7 +71,7 @@ name = "Write lastChange";
 value = 0;
 }
 );
-date = "2026-01-06 06:05:20 +0000";
+date = "2026-01-16 01:39:27 +0000";
 familyName = 0xProto;
 featurePrefixes = (
 {
@@ -1136,5 +1136,5 @@ HV = "100";
 };
 };
 versionMajor = 2;
-versionMinor = 501;
+versionMinor = 502;
 }

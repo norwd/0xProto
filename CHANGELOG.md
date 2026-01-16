@@ -1,5 +1,11 @@
 All notable changes to this project will be documented in this file.
 
+## 2.502
+
+- Introduce [Font Bakery](https://github.com/fonttools/fontbakery) https://github.com/0xType/0xProto/pull/134
+- Update to pass `fontbakery check-universal`
+- (Migrate from requirements.txt to [uv](https://github.com/astral-sh/uv) )
+
 ## 2.501
 
 - New ligatures: `</>`, `</`, `/>` https://github.com/0xType/0xProto/pull/128
